@@ -6,7 +6,7 @@
 
 :root {
   /* 畫布與紙張顏色 */
-  --color-bg-primary: #aebdb5; /* 灰綠色圖畫紙背景 */
+  --color-bg-primary: #ffffff; /* 白色背景 */
   --color-bg-card: #fcfcfc; /* 剪紙白底 */
 
   /* 墨水顏色 */
@@ -50,11 +50,25 @@
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg-primary);
-  /* 淡淡的紙張雜訊 */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
   color: var(--color-text-primary);
   min-height: 100vh;
   line-height: 1.6;
+}
+
+/* 背景圖層（透過 .bg-ambience 控制透明度） */
+.bg-ambience {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .page-wrapper {
@@ -441,4 +455,106 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text-muted);
+}
+
+/* ============================================
+   RWD 響應式設計
+   ============================================ */
+
+/* --- 平板 (768px 以上) --- */
+@media (min-width: 768px) {
+  .container {
+    max-width: 680px;
+  }
+
+  .headline {
+    font-size: 2.6rem;
+  }
+
+  .body-text,
+  .slider-label,
+  .result-description {
+    font-size: 1.2rem;
+  }
+
+  .slider-value-number {
+    font-size: 5rem;
+  }
+
+  .result-title {
+    font-size: 1.8rem;
+  }
+
+  .page-wrapper {
+    padding: var(--space-xl) 2rem;
+  }
+}
+
+/* --- 桌面 (1024px 以上) --- */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .headline {
+    font-size: 2.8rem;
+  }
+
+  .page-wrapper {
+    padding: 3rem 2rem;
+  }
+
+  .btn-submit,
+  .btn-cta-primary,
+  .btn-cta-secondary {
+    font-size: 1.3rem;
+    padding: 16px 28px;
+  }
+
+  .stat-card-value {
+    font-size: 2rem;
+  }
+
+  .slider-value-number {
+    font-size: 5.5rem;
+  }
+}
+
+/* --- 大螢幕 (1440px 以上) --- */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 760px;
+  }
+
+  .page-wrapper {
+    padding: 4rem 2rem;
+  }
+}
+
+/* --- 小手機 (375px 以下) --- */
+@media (max-width: 375px) {
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .slider-value-number {
+    font-size: 3.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .comparison-legend {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn-submit,
+  .btn-cta-primary {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
 }
