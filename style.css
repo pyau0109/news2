@@ -176,6 +176,13 @@ body {
   margin-bottom: 1rem;
 }
 
+.slider-hint {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  display: block;
+}
+
 .slider-value-display {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -339,6 +346,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .marker-user .bar-marker-dot { background: var(--color-accent-yellow); }
+.marker-actual .bar-marker-dot { background: var(--color-accent-pink); }
+.marker-avg .bar-marker-dot { background: var(--color-accent-purple); }
 
 /* 虛線標記（用於「實際數據」和「讀者平均」） */
 .bar-marker-line {
@@ -420,6 +429,12 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 .legend-dot.user {
   background: var(--color-accent-yellow);
+}
+.legend-dot.actual {
+  background: var(--color-accent-pink);
+}
+.legend-dot.avg {
+  background: var(--color-accent-purple);
 }
 
 /* 圖例中的虛線樣式 */
